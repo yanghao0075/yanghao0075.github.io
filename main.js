@@ -39,6 +39,8 @@ const pageTitleEl = document.getElementById('page-title');
 const footerEl = document.getElementById('footer-text');
 const goFrontendEl = document.getElementById('go-frontend');
 const langSwitchEl = document.getElementById('lang-switch');
+const themeSwitchEl = document.getElementById('theme-switch');
+const themeBtnEl = themeSwitchEl ? themeSwitchEl.querySelector('#theme-btn') : null;
 
 function applyI18n(lang) {
   const t = I18N[lang] || I18N.zh;
@@ -48,6 +50,39 @@ function applyI18n(lang) {
   goFrontendEl.setAttribute('aria-label', t.frontendBtn);
   goFrontendEl.title = t.frontendTitle;
   footerEl.textContent = t.footer;
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+}
+
+function updateThemeButton(theme) {
+  if (!themeBtnEl) return;
+  const icon = themeBtnEl.querySelector('.icon');
+  if (!icon) return;
+  if (theme === 'dark') {
+    icon.textContent = '🌙';
+    themeBtnEl.setAttribute('aria-label', '切换到浅色');
+    themeBtnEl.title = '切换到浅色';
+  } else {
+    icon.textContent = '🌞';
+    themeBtnEl.setAttribute('aria-label', '切换到深色');
+    themeBtnEl.title = '切换到深色';
+  }
+}
+
+function initTheme() {
+  const saved = localStorage.getItem('theme') || 'light';
+  applyTheme(saved);
+  updateThemeButton(saved);
+}
+
+function onThemeToggle() {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  const next = current === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('theme', next);
+  applyTheme(next);
+  updateThemeButton(next);
 }
 
 function renderProjects(list, lang) {
@@ -120,5 +155,21 @@ if (langSwitchEl) {
   console.warn('lang-switch element not found');
 }
 
+if (themeSwitchEl && themeBtnEl) {
+  themeSwitchEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('.theme-btn');
+    if (!btn) return;
+    onThemeToggle();
+  });
+  themeSwitchEl.addEventListener('keydown', (e) => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('theme-btn')) {
+      e.preventDefault();
+      onThemeToggle();
+    }
+  });
+} else {
+  console.warn('theme-switch element not found');
+}
+
 // 保险：等待 DOM 就绪后初始化（尽管脚本在末尾）
-document.addEventListener('DOMContentLoaded', initLang);
+document.addEventListener('DOMContentLoaded', () => { initTheme(); initLang(); });
