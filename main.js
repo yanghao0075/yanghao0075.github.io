@@ -10,6 +10,7 @@ const I18N = {
   zh: {
     brand: 'Yang Hao · 项目展示',
     pageTitle: '个人项目',
+    bio: '独立开发者，热爱分享、旅行与写作。',
     frontendBtn: '进入前端',
     frontendTitle: '进入前端（需登录）',
     repoLink: '查看仓库',
@@ -18,6 +19,7 @@ const I18N = {
   ja: {
     brand: 'Yang Hao · プロジェクト展示',
     pageTitle: '個人プロジェクト',
+    bio: 'インディー開発者。共有、旅行、執筆が好きです。',
     frontendBtn: 'フロントへ',
     frontendTitle: 'フロントへ（ログイン必要）',
     repoLink: 'リポジトリを見る',
@@ -26,6 +28,7 @@ const I18N = {
   en: {
     brand: 'Yang Hao · Projects',
     pageTitle: 'Projects',
+    bio: 'Independent developer, enjoys sharing, traveling, and writing.',
     frontendBtn: 'Go to Frontend',
     frontendTitle: 'Go to Frontend (Login required)',
     repoLink: 'View Repo',
@@ -33,9 +36,11 @@ const I18N = {
   },
 };
 
-const projectsEl = document.getElementById('projects');
+const linksEl = document.getElementById('links');
 const brandEl = document.getElementById('brand');
 const pageTitleEl = document.getElementById('page-title');
+const handleEl = document.getElementById('handle');
+const bioEl = document.getElementById('bio');
 const footerEl = document.getElementById('footer-text');
 const goFrontendEl = document.getElementById('go-frontend');
 const langSwitchEl = document.getElementById('lang-switch');
@@ -45,7 +50,8 @@ const themeBtnEl = themeSwitchEl ? themeSwitchEl.querySelector('#theme-btn') : n
 function applyI18n(lang) {
   const t = I18N[lang] || I18N.zh;
   brandEl.textContent = t.brand;
-  pageTitleEl.textContent = t.pageTitle;
+  if (pageTitleEl) pageTitleEl.textContent = t.pageTitle;
+  if (bioEl) bioEl.textContent = t.bio;
   // 按钮仅显示图标，文字作为提示与无障碍标签
   goFrontendEl.setAttribute('aria-label', t.frontendBtn);
   goFrontendEl.title = t.frontendTitle;
@@ -87,16 +93,18 @@ function onThemeToggle() {
 
 function renderProjects(list, lang) {
   const t = I18N[lang] || I18N.zh;
-  projectsEl.innerHTML = '';
+  linksEl.innerHTML = '';
   list.forEach((item) => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <h3>${item.name}</h3>
-      <p>${item.description}</p>
-      <a href="${item.url}" target="_blank" rel="noopener noreferrer">${t.repoLink}</a>
+    const a = document.createElement('a');
+    a.className = 'link-item';
+    a.href = item.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.innerHTML = `
+      <span class="left"><span class="bullet" aria-hidden="true"></span><span class="title">${item.name}</span></span>
+      <span class="right">${t.repoLink}</span>
     `;
-    projectsEl.appendChild(card);
+    linksEl.appendChild(a);
   });
 }
 
