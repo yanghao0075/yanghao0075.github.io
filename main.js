@@ -87,11 +87,19 @@ function initLang() {
   loadProjects(saved);
 }
 
-langSelectEl.addEventListener('change', (e) => {
-  const lang = e.target.value;
+function onLangChange(lang) {
   localStorage.setItem('lang', lang);
   applyI18n(lang);
   loadProjects(lang);
-});
+}
 
-initLang();
+if (langSelectEl) {
+  langSelectEl.addEventListener('change', (e) => onLangChange(e.target.value));
+  // 某些浏览器下 select 使用 input 事件更灵敏
+  langSelectEl.addEventListener('input', (e) => onLangChange(e.target.value));
+} else {
+  console.warn('lang-select element not found');
+}
+
+// 保险：等待 DOM 就绪后初始化（尽管脚本在末尾）
+document.addEventListener('DOMContentLoaded', initLang);
