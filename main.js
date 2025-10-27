@@ -13,7 +13,7 @@ const I18N = {
     bio: '独立开发者，热爱分享、旅行与写作。',
     frontendBtn: '进入前端',
     frontendTitle: '进入前端（需登录）',
-    repoLink: '查看仓库',
+    repoLink: '查看',
     footer: '© 2025 Yang Hao',
   },
   ja: {
@@ -22,7 +22,7 @@ const I18N = {
     bio: 'インディー開発者。共有、旅行、執筆が好きです。',
     frontendBtn: 'フロントへ',
     frontendTitle: 'フロントへ（ログイン必要）',
-    repoLink: 'リポジトリを見る',
+    repoLink: '見る',
     footer: '© 2025 Yang Hao',
   },
   en: {
@@ -31,7 +31,7 @@ const I18N = {
     bio: 'Independent developer, enjoys sharing, traveling, and writing.',
     frontendBtn: 'Go to Frontend',
     frontendTitle: 'Go to Frontend (Login required)',
-    repoLink: 'View Repo',
+    repoLink: 'View',
     footer: '© 2025 Yang Hao',
   },
 };
@@ -46,6 +46,21 @@ const goFrontendEl = document.getElementById('go-frontend');
 const langSwitchEl = document.getElementById('lang-switch');
 const themeSwitchEl = document.getElementById('theme-switch');
 const themeBtnEl = themeSwitchEl ? themeSwitchEl.querySelector('#theme-btn') : null;
+
+// 项目名称多语言映射（后端暂未提供多语言字段时的本地兜底）
+function getProjectName(item, lang) {
+  // 优先使用后端返回的 i18n 字段
+  if (item && item.i18n && item.i18n.name && item.i18n.name[lang]) {
+    return item.i18n.name[lang];
+  }
+  const MAP = {
+    '漫画翻译服务': { zh: '漫画翻译服务', ja: '漫画翻訳サービス', en: 'Manga Translation Service' },
+    '个人项目管理系统': { zh: '个人项目管理系统', ja: '個人プロジェクト管理システム', en: 'Personal Project Management System' },
+    '个人项目展示网站的后端API': { zh: '个人项目展示网站的后端API', ja: '個人プロジェクト展示サイトのバックエンドAPI', en: 'Backend API for Project Showcase' },
+  };
+  const m = MAP[item?.name];
+  return (m && m[lang]) || item.name;
+}
 
 function applyI18n(lang) {
   const t = I18N[lang] || I18N.zh;
@@ -100,8 +115,9 @@ function renderProjects(list, lang) {
     a.href = item.url;
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
+    const displayName = getProjectName(item, lang);
     a.innerHTML = `
-      <span class="left"><span class="bullet" aria-hidden="true"></span><span class="title">${item.name}</span></span>
+      <span class="left"><span class="bullet" aria-hidden="true"></span><span class="title">${displayName}</span></span>
       <span class="right">${t.repoLink}</span>
     `;
     linksEl.appendChild(a);
@@ -117,7 +133,7 @@ async function loadProjects(lang) {
   } catch (e) {
     // 兜底静态数据（名称/描述保持中文，链接统一）
     renderProjects([
-      { name: '个人项目展示网站', description: '静态展示个人项目，GitHub Pages 托管', url: 'https://yanghao0075.github.io/my_website/' },
+      { name: '漫画翻译服务', description: 'AI 漫画翻译服务', url: 'https://manga-translator-ai.vercel.app/' },
       { name: '个人项目管理系统', description: '项目管理与配置仓库', url: 'https://github.com/yanghao0075/my_website' },
       { name: '个人项目展示网站的后端API', description: 'Go 提供 REST API', url: 'https://github.com/yanghao0075/my_website_backend' },
     ], lang);
