@@ -38,13 +38,19 @@ const brandEl = document.getElementById('brand');
 const pageTitleEl = document.getElementById('page-title');
 const footerEl = document.getElementById('footer-text');
 const goFrontendEl = document.getElementById('go-frontend');
+const goFrontendTextEl = document.getElementById('go-frontend-text');
 const langSwitchEl = document.getElementById('lang-switch');
 
 function applyI18n(lang) {
   const t = I18N[lang] || I18N.zh;
   brandEl.textContent = t.brand;
   pageTitleEl.textContent = t.pageTitle;
-  goFrontendEl.textContent = t.frontendBtn;
+  if (goFrontendTextEl) {
+    goFrontendTextEl.textContent = t.frontendBtn;
+  } else {
+    // 兜底：旧结构仍更新整个链接文本
+    goFrontendEl.textContent = t.frontendBtn;
+  }
   goFrontendEl.title = t.frontendTitle;
   footerEl.textContent = t.footer;
 }
