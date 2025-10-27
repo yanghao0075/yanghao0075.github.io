@@ -15,7 +15,13 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); f
 .nav .btn:hover { filter: brightness(0.95); }
 
 .nav { display: flex; align-items: center; gap: 10px; }
-.nav select { appearance: none; background: var(--card); color: var(--text); border: 1px solid #1f2937; padding: 6px 10px; border-radius: 8px; }
+.nav select { display: none; }
+
+.lang-switch { display: flex; align-items: center; gap: 8px; }
+.lang-btn { background: var(--card); color: var(--text); border: 1px solid #1f2937; border-radius: 8px; width: 40px; height: 32px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.05s ease, background 0.2s ease; }
+.lang-btn .flag { font-size: 18px; line-height: 1; }
+.lang-btn:hover { transform: translateY(-1px); }
+.lang-btn.active { background: var(--primary); color: var(--bg); border-color: var(--primary); }
 
 .container { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
 h1 { font-size: 22px; margin: 0 0 16px; color: var(--text); }

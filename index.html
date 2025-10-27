@@ -10,11 +10,11 @@
     <header class="topbar">
       <div id="brand" class="brand">Yang Hao · 项目展示</div>
       <nav class="nav">
-        <select id="lang-select" aria-label="语言 Language">
-          <option value="zh">中文</option>
-          <option value="ja">日本語</option>
-          <option value="en">English</option>
-        </select>
+        <div id="lang-switch" class="lang-switch" role="group" aria-label="语言切换">
+          <button class="lang-btn" data-lang="zh" aria-label="中文" title="中文" type="button"><span class="flag" aria-hidden="true">🇨🇳</span></button>
+          <button class="lang-btn" data-lang="ja" aria-label="日本語" title="日本語" type="button"><span class="flag" aria-hidden="true">🇯🇵</span></button>
+          <button class="lang-btn" data-lang="en" aria-label="English" title="English" type="button"><span class="flag" aria-hidden="true">🇺🇸</span></button>
+        </div>
         <a id="go-frontend" class="btn" href="#" title="进入前端（需登录）">进入前端</a>
       </nav>
     </header>

@@ -38,7 +38,7 @@ const brandEl = document.getElementById('brand');
 const pageTitleEl = document.getElementById('page-title');
 const footerEl = document.getElementById('footer-text');
 const goFrontendEl = document.getElementById('go-frontend');
-const langSelectEl = document.getElementById('lang-select');
+const langSwitchEl = document.getElementById('lang-switch');
 
 function applyI18n(lang) {
   const t = I18N[lang] || I18N.zh;
@@ -80,9 +80,15 @@ async function loadProjects(lang) {
   }
 }
 
+function setActiveLangButton(lang) {
+  if (!langSwitchEl) return;
+  const btns = langSwitchEl.querySelectorAll('.lang-btn');
+  btns.forEach((b) => b.classList.toggle('active', b.dataset.lang === lang));
+}
+
 function initLang() {
   const saved = localStorage.getItem('lang') || 'zh';
-  langSelectEl.value = saved;
+  setActiveLangButton(saved);
   applyI18n(saved);
   loadProjects(saved);
 }
@@ -93,12 +99,24 @@ function onLangChange(lang) {
   loadProjects(lang);
 }
 
-if (langSelectEl) {
-  langSelectEl.addEventListener('change', (e) => onLangChange(e.target.value));
-  // 某些浏览器下 select 使用 input 事件更灵敏
-  langSelectEl.addEventListener('input', (e) => onLangChange(e.target.value));
+if (langSwitchEl) {
+  langSwitchEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('.lang-btn');
+    if (!btn) return;
+    const lang = btn.dataset.lang;
+    setActiveLangButton(lang);
+    onLangChange(lang);
+  });
+  langSwitchEl.addEventListener('keydown', (e) => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('lang-btn')) {
+      e.preventDefault();
+      const lang = e.target.dataset.lang;
+      setActiveLangButton(lang);
+      onLangChange(lang);
+    }
+  });
 } else {
-  console.warn('lang-select element not found');
+  console.warn('lang-switch element not found');
 }
 
 // 保险：等待 DOM 就绪后初始化（尽管脚本在末尾）
