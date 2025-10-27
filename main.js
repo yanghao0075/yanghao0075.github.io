@@ -38,19 +38,14 @@ const brandEl = document.getElementById('brand');
 const pageTitleEl = document.getElementById('page-title');
 const footerEl = document.getElementById('footer-text');
 const goFrontendEl = document.getElementById('go-frontend');
-const goFrontendTextEl = document.getElementById('go-frontend-text');
 const langSwitchEl = document.getElementById('lang-switch');
 
 function applyI18n(lang) {
   const t = I18N[lang] || I18N.zh;
   brandEl.textContent = t.brand;
   pageTitleEl.textContent = t.pageTitle;
-  if (goFrontendTextEl) {
-    goFrontendTextEl.textContent = t.frontendBtn;
-  } else {
-    // 兜底：旧结构仍更新整个链接文本
-    goFrontendEl.textContent = t.frontendBtn;
-  }
+  // 按钮仅显示图标，文字作为提示与无障碍标签
+  goFrontendEl.setAttribute('aria-label', t.frontendBtn);
   goFrontendEl.title = t.frontendTitle;
   footerEl.textContent = t.footer;
 }
