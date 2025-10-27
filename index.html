@@ -8,16 +8,21 @@
   </head>
   <body>
     <header class="topbar">
-      <div class="brand">Yang Hao · 项目展示</div>
+      <div id="brand" class="brand">Yang Hao · 项目展示</div>
       <nav class="nav">
+        <select id="lang-select" aria-label="语言 Language">
+          <option value="zh">中文</option>
+          <option value="ja">日本語</option>
+          <option value="en">English</option>
+        </select>
         <a id="go-frontend" class="btn" href="#" title="进入前端（需登录）">进入前端</a>
       </nav>
     </header>
     <main class="container">
-      <h1>个人项目</h1>
+      <h1 id="page-title">个人项目</h1>
       <section id="projects" class="grid"></section>
     </main>
-    <footer class="footer">© 2025 Yang Hao</footer>
+    <footer id="footer-text" class="footer">© 2025 Yang Hao</footer>
 
     <script src="./main.js"></script>
   </body>
