@@ -55,7 +55,7 @@ function getProjectName(item, lang) {
   }
   const MAP = {
     '漫画翻译服务': { zh: '漫画翻译服务', ja: '漫画翻訳サービス', en: 'Manga Translation Service' },
-    '个人项目管理系统': { zh: '个人项目管理系统', ja: '個人プロジェクト管理システム', en: 'Personal Project Management System' },
+    '纯色背景服务': { zh: '纯色背景服务', ja: '単色背景サービス', en: 'SolidColor Backgrounds' },
     '个人项目展示网站的后端API': { zh: '个人项目展示网站的后端API', ja: '個人プロジェクト展示サイトのバックエンドAPI', en: 'Backend API for Project Showcase' },
   };
   const m = MAP[item?.name];
@@ -134,7 +134,7 @@ async function loadProjects(lang) {
     // 兜底静态数据（名称/描述保持中文，链接统一）
     renderProjects([
       { name: '漫画翻译服务', description: 'AI 漫画翻译服务', url: 'https://manga-translator-ai.vercel.app/' },
-      { name: '个人项目管理系统', description: '项目管理与配置仓库', url: 'https://github.com/yanghao0075/my_website' },
+      { name: '纯色背景服务', description: '纯色背景生成器，GitHub Pages 托管', url: 'https://solidcolor.github.io/' },
       { name: '个人项目展示网站的后端API', description: 'Go 提供 REST API', url: 'https://github.com/yanghao0075/my_website_backend' },
     ], lang);
   }
