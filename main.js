@@ -1,5 +1,5 @@
 // 前端站点链接（占位，可根据实际部署地址调整）
-const FRONTEND_URL = 'https://yanghao0075.github.io/my_website/';
+const FRONTEND_URL = 'https://admin-dashboard-chi-ten-96.vercel.app/';
 document.getElementById('go-frontend').href = FRONTEND_URL;
 
 // 后端 API 地址（固定为提供的 IP 与端口）
