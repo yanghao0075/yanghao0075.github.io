@@ -136,6 +136,8 @@ async function loadProjects(lang) {
       { name: '漫画翻译服务', description: 'AI 漫画翻译服务', url: 'https://manga-translator-ai.vercel.app/' },
       { name: '纯色背景服务', description: '纯色背景生成器，GitHub Pages 托管', url: 'https://solidcolor.github.io/' },
       { name: '便签应用', description: '轻量便签应用支持页面', url: 'https://support-hu-note.vercel.app/' },
+      // 新增 https://json-format-sigma.vercel.app/ 的json格式化工具
+      { name: 'JSON 格式化工具', description: '在线 JSON 格式化工具', url: 'https://json-format-sigma.vercel.app/' },
     ], lang);
   }
 }
