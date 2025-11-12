@@ -57,6 +57,7 @@ function getProjectName(item, lang) {
     '漫画翻译服务': { zh: '漫画翻译服务', ja: '漫画翻訳サービス', en: 'Manga Translation Service' },
     '纯色背景服务': { zh: '纯色背景服务', ja: '単色背景サービス', en: 'SolidColor Backgrounds' },
     '便签应用': { zh: '便签应用', ja: 'メモアプリ', en: 'Note App' },
+    'JSON 格式化工具': { zh: 'JSON 格式化工具', ja: 'JSON フォーマットツール', en: 'JSON Formatter' },
   };
   const m = MAP[item?.name];
   return (m && m[lang]) || item.name;
