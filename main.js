@@ -139,6 +139,8 @@ async function loadProjects(lang) {
       { name: '便签应用', description: '轻量便签应用支持页面', url: 'https://support-hu-note.vercel.app/' },
       // 新增 https://json-format-sigma.vercel.app/ 的json格式化工具
       { name: 'JSON 格式化工具', description: '在线 JSON 格式化工具', url: 'https://json-format-sigma.vercel.app/' },
+      // 新增 https://solidcolorx-support.vercel.app/ 支持页面
+      { name: '纯色背景生成器', description: '纯色背景生成器', url: 'https://solidcolorx-support.vercel.app/' },
     ], lang);
   }
 }
