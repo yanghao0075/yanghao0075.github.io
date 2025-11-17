@@ -58,6 +58,7 @@ function getProjectName(item, lang) {
     '纯色背景服务': { zh: '纯色背景服务', ja: '単色背景サービス', en: 'SolidColor Backgrounds' },
     '便签应用': { zh: '便签应用', ja: 'メモアプリ', en: 'Note App' },
     'JSON 格式化工具': { zh: 'JSON 格式化工具', ja: 'JSON フォーマットツール', en: 'JSON Formatter' },
+    '纯色背景应用': { zh: '纯色背景应用', ja: '単色背景アプリ', en: 'SolidColor Backgrounds Application' },
   };
   const m = MAP[item?.name];
   return (m && m[lang]) || item.name;
@@ -135,12 +136,12 @@ async function loadProjects(lang) {
     // 兜底静态数据（名称/描述保持中文，链接统一）
     renderProjects([
       { name: '漫画翻译服务', description: 'AI 漫画翻译服务', url: 'https://manga-translator-ai.vercel.app/' },
-      { name: '纯色背景服务', description: '纯色背景生成器，GitHub Pages 托管', url: 'https://solidcolor.github.io/' },
+      { name: '纯色背景服务', description: '纯色背景生成服务，GitHub Pages 托管', url: 'https://solidcolor.github.io/' },
       { name: '便签应用', description: '轻量便签应用支持页面', url: 'https://support-hu-note.vercel.app/' },
       // 新增 https://json-format-sigma.vercel.app/ 的json格式化工具
       { name: 'JSON 格式化工具', description: '在线 JSON 格式化工具', url: 'https://json-format-sigma.vercel.app/' },
       // 新增 https://solidcolorx-support.vercel.app/ 支持页面
-      { name: '纯色背景生成器', description: '纯色背景生成器', url: 'https://solidcolorx-support.vercel.app/' },
+      { name: '纯色背景应用', description: '纯色背景应用支持页面', url: 'https://solidcolorx-support.vercel.app/' },
     ], lang);
   }
 }
