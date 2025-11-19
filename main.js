@@ -59,6 +59,8 @@ function getProjectName(item, lang) {
     '便签应用': { zh: '便签应用', ja: 'メモアプリ', en: 'Note App' },
     'JSON 格式化工具': { zh: 'JSON 格式化工具', ja: 'JSON フォーマットツール', en: 'JSON Formatter' },
     '纯色背景应用': { zh: '纯色背景应用', ja: '単色背景アプリ', en: 'SolidColor Backgrounds Application' },
+    // webos 应用
+    'webOS 应用': { zh: 'webOS 应用', ja: 'webOS アプリ', en: 'webOS Applications' },
   };
   const m = MAP[item?.name];
   return (m && m[lang]) || item.name;
@@ -142,6 +144,8 @@ async function loadProjects(lang) {
       { name: 'JSON 格式化工具', description: '在线 JSON 格式化工具', url: 'https://json-format-sigma.vercel.app/' },
       // 新增 https://solidcolorx-support.vercel.app/ 支持页面
       { name: '纯色背景应用', description: '纯色背景应用支持页面', url: 'https://solidcolorx-support.vercel.app/' },
+      // webos 应用
+      { name: 'webOS 应用', description: 'webOS 应用支持页面', url: 'https://react-webos.vercel.app/' },
     ], lang);
   }
 }
