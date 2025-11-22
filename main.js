@@ -61,6 +61,8 @@ function getProjectName(item, lang) {
     '纯色背景应用': { zh: '纯色背景应用', ja: '単色背景アプリ', en: 'SolidColor Backgrounds Application' },
     // webos 应用
     'webOS 应用': { zh: 'webOS 应用', ja: 'webOS アプリ', en: 'webOS Applications' },
+    // 打字游戏
+    '打字游戏': { zh: '打字游戏', ja: 'タイピングゲーム', en: 'Typing Game' },
   };
   const m = MAP[item?.name];
   return (m && m[lang]) || item.name;
@@ -146,6 +148,8 @@ async function loadProjects(lang) {
       { name: '纯色背景应用', description: '纯色背景应用支持页面', url: 'https://solidcolorx-support.vercel.app/' },
       // webos 应用
       { name: 'webOS 应用', description: 'webOS 应用支持页面', url: 'https://react-webos.vercel.app/' },
+      // 打字游戏
+      { name: '打字游戏', description: '在线打字游戏', url: 'https://super-word-smash.vercel.app/' },
     ], lang);
   }
 }
