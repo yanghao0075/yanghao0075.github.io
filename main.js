@@ -157,7 +157,7 @@ async function loadProjects(lang) {
       // 微信公众号编辑器
       { name: '微信公众号编辑器', description: '在线微信公众号编辑器', url: 'https://wechat-markdown-editor-eight.vercel.app/' },
       // 在线AI擦除服务
-      { name: 'AI擦除服务', description: '在线AI图片擦除服务', url: 'http://106.75.139.203:37080/'},
+      { name: 'AI图片擦除服务', description: '在线AI图片擦除服务', url: 'http://106.75.139.203:37080/' },
     ], lang);
   }
 }
