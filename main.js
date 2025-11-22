@@ -65,6 +65,8 @@ function getProjectName(item, lang) {
     '打字游戏': { zh: '打字游戏', ja: 'タイピングゲーム', en: 'Typing Game' },
     // 微信公众号编辑器
     '微信公众号编辑器': { zh: '微信公众号编辑器', ja: 'ブログエディター', en: 'Blog Editor' },
+    // AI擦除服务
+    'AI图片擦除服务': { zh: 'AI图片擦除服务', ja: 'AI画像消去サービス', en: 'AI Image Erasure Service' },
   };
   const m = MAP[item?.name];
   return (m && m[lang]) || item.name;
@@ -154,6 +156,8 @@ async function loadProjects(lang) {
       { name: '打字游戏', description: '在线打字游戏', url: 'https://super-word-smash.vercel.app/' },
       // 微信公众号编辑器
       { name: '微信公众号编辑器', description: '在线微信公众号编辑器', url: 'https://wechat-markdown-editor-eight.vercel.app/' },
+      // 在线AI擦除服务
+      { name: 'AI擦除服务', description: '在线AI图片擦除服务', url: 'http://106.75.139.203:37080/'},
     ], lang);
   }
 }
