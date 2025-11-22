@@ -63,6 +63,8 @@ function getProjectName(item, lang) {
     'webOS 应用': { zh: 'webOS 应用', ja: 'webOS アプリ', en: 'webOS Applications' },
     // 打字游戏
     '打字游戏': { zh: '打字游戏', ja: 'タイピングゲーム', en: 'Typing Game' },
+    // 微信公众号编辑器
+    '微信公众号编辑器': { zh: '微信公众号编辑器', ja: 'ブログエディター', en: 'Blog Editor' },
   };
   const m = MAP[item?.name];
   return (m && m[lang]) || item.name;
@@ -150,6 +152,8 @@ async function loadProjects(lang) {
       { name: 'webOS 应用', description: 'webOS 应用支持页面', url: 'https://react-webos.vercel.app/' },
       // 打字游戏
       { name: '打字游戏', description: '在线打字游戏', url: 'https://super-word-smash.vercel.app/' },
+      // 微信公众号编辑器
+      { name: '微信公众号编辑器', description: '在线微信公众号编辑器', url: 'https://wechat-markdown-editor-eight.vercel.app/' },
     ], lang);
   }
 }
