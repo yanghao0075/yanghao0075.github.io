@@ -81,6 +81,7 @@ function applyI18n(lang) {
   goFrontendEl.setAttribute('aria-label', t.frontendBtn);
   goFrontendEl.title = t.frontendTitle;
   footerEl.textContent = t.footer;
+  document.title = `Yang Hao · ${t.pageTitle}`;
 }
 
 function applyTheme(theme) {
@@ -130,6 +131,8 @@ function renderProjects(list, lang) {
       <span class="left"><span class="bullet" aria-hidden="true"></span><span class="title">${displayName}</span></span>
       <span class="right">${t.repoLink}</span>
     `;
+    a.title = displayName;
+    a.setAttribute('aria-label', `${displayName} - ${t.repoLink}`);
     linksEl.appendChild(a);
   });
 }
