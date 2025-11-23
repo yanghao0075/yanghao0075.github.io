@@ -67,6 +67,8 @@ function getProjectName(item, lang) {
     '微信公众号编辑器': { zh: '微信公众号编辑器', ja: 'ブログエディター', en: 'Blog Editor' },
     // AI擦除服务
     'AI图片擦除服务': { zh: 'AI图片擦除服务', ja: 'AI画像消去サービス', en: 'AI Image Erasure Service' },
+    // 渲染deepseek渲染服务
+    '渲染deepseek渲染服务': { zh: '渲染deepseek渲染服务', ja: 'ディープセキュアレンダリングサービス', en: 'Deepseek Rendering Service' },
   };
   const m = MAP[item?.name];
   return (m && m[lang]) || item.name;
@@ -161,6 +163,8 @@ async function loadProjects(lang) {
       { name: '微信公众号编辑器', description: '在线微信公众号编辑器', url: 'https://wechat-markdown-editor-eight.vercel.app/' },
       // 在线AI擦除服务
       { name: 'AI图片擦除服务', description: '在线AI图片擦除服务', url: 'http://106.75.139.203:37080/' },
+      // 渲染deepseek渲染服务
+      { name: '渲染deepseek渲染服务', description: '在线渲染deepseek渲染服务', url: 'https://deepseekrender.vercel.app/' },
     ], lang);
   }
 }
