@@ -69,6 +69,8 @@ function getProjectName(item, lang) {
     'AI图片擦除服务': { zh: 'AI图片擦除服务', ja: 'AI画像消去サービス', en: 'AI Image Erasure Service' },
     // 渲染deepseek渲染服务
     '渲染deepseek渲染服务': { zh: '渲染deepseek渲染服务', ja: 'ディープセキュアレンダリングサービス', en: 'Deepseek Rendering Service' },
+    // 小红书封面生成
+    '小红书封面生成': { zh: '小红书封面生成', ja: 'ブログエディター', en: 'Blog Editor' },
   };
   const m = MAP[item?.name];
   return (m && m[lang]) || item.name;
@@ -165,6 +167,8 @@ async function loadProjects(lang) {
       { name: 'AI图片擦除服务', description: '在线AI图片擦除服务', url: 'http://106.75.139.203:37080/' },
       // 渲染deepseek渲染服务
       { name: '渲染deepseek渲染服务', description: '在线渲染deepseek渲染服务', url: 'https://deepseekrender.vercel.app/' },
+      // 小红书封面生成
+      { name: '小红书封面生成', description: '在线小红书封面生成', url: 'https://smart-card-forge.vercel.app/' },
     ], lang);
   }
 }
