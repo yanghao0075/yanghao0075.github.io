@@ -71,6 +71,8 @@ function getProjectName(item, lang) {
     '渲染deepseek渲染服务': { zh: '渲染deepseek渲染服务', ja: 'ディープセキュアレンダリングサービス', en: 'Deepseek Rendering Service' },
     // 小红书封面生成
     '小红书封面生成': { zh: '小红书封面生成', ja: 'ブログエディター', en: 'Blog Editor' },
+    // 编程小游戏
+    '编程小游戏': { zh: '编程小游戏', ja: 'プログラミングゲーム', en: 'Programming Games' },
   };
   const m = MAP[item?.name];
   return (m && m[lang]) || item.name;
@@ -169,6 +171,8 @@ async function loadProjects(lang) {
       { name: '渲染deepseek渲染服务', description: '在线渲染deepseek渲染服务', url: 'https://deepseekrender.vercel.app/' },
       // 小红书封面生成
       { name: '小红书封面生成', description: '在线小红书封面生成', url: 'https://smart-card-forge.vercel.app/' },
+      // 编程小游戏
+      { name: '编程小游戏', description: '在线编程小游戏', url: 'https://niubi-logic.vercel.app/' },
     ], lang);
   }
 }
