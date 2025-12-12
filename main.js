@@ -73,6 +73,8 @@ function getProjectName(item, lang) {
     '小红书封面生成': { zh: '小红书封面生成', ja: 'ブログエディター', en: 'Blog Editor' },
     // 编程小游戏
     '编程小游戏': { zh: '编程小游戏', ja: 'プログラミングゲーム', en: 'Programming Games' },
+    // svg转wpf代码服务
+    'svg转wpf代码服务': { zh: 'svg转wpf代码服务', ja: 'SVG を WPF コードに変換サービス', en: 'SVG to WPF Code Conversion Service' },
   };
   const m = MAP[item?.name];
   return (m && m[lang]) || item.name;
@@ -173,6 +175,8 @@ async function loadProjects(lang) {
       { name: '小红书封面生成', description: '在线小红书封面生成', url: 'https://smart-card-forge.vercel.app/' },
       // 编程小游戏
       { name: '编程小游戏', description: '在线编程小游戏', url: 'https://niubi-logic.vercel.app/' },
+      // svg转wpf代码服务
+      { name: 'svg转wpf代码服务', description: '在线svg转wpf代码服务', url: 'https://xamlcraft.vercel.app/' },
     ], lang);
   }
 }
